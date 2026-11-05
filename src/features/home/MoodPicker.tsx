@@ -19,7 +19,7 @@ export function MoodPicker({ onAdd }: { onAdd: (slug: string, size?: string) => 
   const item = bySlug(mood.slug)!;
   return (
     <Section className="on-color border-y-2 border-espresso bg-butter">
-      <Container className="grid items-center gap-12 lg:grid-cols-12">
+      <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-6">
           <p className="font-hand text-3xl">what&apos;s the mood today?</p>
           <h2 className="mt-1 text-4xl md:text-5xl">Pick a mood, we&apos;ll pour the coffee.</h2>

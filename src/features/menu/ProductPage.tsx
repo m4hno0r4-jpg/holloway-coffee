@@ -31,13 +31,13 @@ export function ProductPage({ slug, onAdd }: { slug: string; onAdd: (n: number, 
 
   return (
     <article>
-      <Container className="grid gap-12 pb-section-sm pt-10 lg:grid-cols-12 lg:gap-16 lg:pt-14">
+      <Container className="grid gap-8 pb-section-sm pt-6 lg:grid-cols-12 lg:gap-14 lg:pt-10">
         <div className="lg:col-span-7">
-          <div className="aspect-[4/5] -rotate-1 overflow-hidden border-2 border-ivory shadow-[8px_8px_0_rgb(var(--color-butter))] md:aspect-[5/6]">
+          <div className="aspect-square -rotate-1 overflow-hidden border-2 border-ivory sm:aspect-[4/5] shadow-[8px_8px_0_rgb(var(--color-butter))] md:aspect-[5/6] lg:aspect-auto lg:h-[72vh]">
             <Photo name={item.photo} eager sizes="(min-width:1024px) 58vw, 100vw" />
           </div>
           {coffee && (
-            <div className="mt-6 grid grid-cols-2 gap-6">
+            <div className="mt-5 grid grid-cols-2 gap-4 md:mt-6 md:gap-6">
               <div className="aspect-[4/3] rotate-1 overflow-hidden border-2 border-ivory shadow-[5px_5px_0_rgb(var(--color-blush))]"><Photo name="intro" sizes="(min-width:1024px) 28vw, 50vw" /></div>
               <div className="aspect-[4/3] -rotate-1 overflow-hidden border-2 border-ivory shadow-[5px_5px_0_rgb(var(--color-sage))]"><Photo name="banner" sizes="(min-width:1024px) 28vw, 50vw" /></div>
             </div>
@@ -93,7 +93,7 @@ export function ProductPage({ slug, onAdd }: { slug: string; onAdd: (n: number, 
       </Container>
 
       <section className="border-t border-ivory/25 py-section-sm">
-        <Container className="grid gap-12 lg:grid-cols-3">
+        <Container className="grid gap-8 lg:grid-cols-3 lg:gap-12">
           <div>
             <h2 className={h3}>THE DETAILS</h2>
             <p className="mt-4 text-ivory-deep">{item.description}</p>
@@ -132,7 +132,7 @@ export function ProductPage({ slug, onAdd }: { slug: string; onAdd: (n: number, 
       <section className="border-t border-ivory/25 py-section-sm">
         <Container>
           <h2 className="text-3xl text-ink-inverse">{coffee ? 'Related coffees' : 'You might also like'}</h2>
-          <div className="mt-10 grid gap-10 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:mt-10 md:gap-10">
             {related.map((r) => (
               <a key={r.slug} href={`#/menu/${r.slug}`} className="group block">
                 <div className="aspect-[4/3] overflow-hidden border-2 border-ivory shadow-[5px_5px_0_rgb(var(--color-butter))] transition duration-base group-hover:-translate-y-1 group-hover:-rotate-1 motion-reduce:transform-none">

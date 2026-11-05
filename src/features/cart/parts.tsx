@@ -12,7 +12,7 @@ export function LineRow({ line, compact = false }: { line: DetailedLine; compact
   const { setQty, remove } = useCart();
   return (
     <li className="grid grid-cols-[4.5rem_1fr] gap-4 border-b py-5 first:pt-0 sm:grid-cols-[6rem_1fr]">
-      <div className="aspect-square overflow-hidden rounded-md">
+      <div className="aspect-square overflow-hidden rounded-md border-2 border-espresso">
         <Photo name={line.item.photo} sizes="96px" />
       </div>
       <div className="min-w-0">
@@ -129,7 +129,7 @@ export function Recs() {
       <ul className="mt-8 grid gap-6 sm:grid-cols-3">
         {picks.map((i) => (
           <li key={i.slug} className="rounded-lg border-2 border-espresso bg-surface-raised shadow-hard p-4">
-            <div className="aspect-[4/3] overflow-hidden rounded-md"><Photo name={i.photo} sizes="(min-width:640px) 30vw, 100vw" /></div>
+            <div className="aspect-[4/3] overflow-hidden rounded-md border-2 border-espresso"><Photo name={i.photo} sizes="(min-width:640px) 30vw, 100vw" /></div>
             <h3 className="mt-4 text-xl">{i.name}</h3>
             <p className="text-sm text-ink-muted">{priceLabel(i)}</p>
             <button type="button" onClick={() => add(i.slug, 1, i.sizes?.[0])}

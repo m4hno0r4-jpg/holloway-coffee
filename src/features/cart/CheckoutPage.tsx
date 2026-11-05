@@ -126,7 +126,7 @@ export function CheckoutPage() {
         {cart.lines.map((l) => (
           <li key={l.key} className="grid grid-cols-[3.5rem_1fr_auto] items-center gap-3 py-3">
             <div className="relative aspect-square rounded-md">
-              <div className="h-full w-full overflow-hidden rounded-md"><Photo name={l.item.photo} sizes="56px" /></div>
+              <div className="h-full w-full overflow-hidden rounded-md border-2 border-espresso"><Photo name={l.item.photo} sizes="56px" /></div>
               <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-pill bg-espresso px-1 text-xs text-ivory">{l.qty}</span>
             </div>
             <p className="text-sm"><span className="font-medium">{l.item.name}</span>{l.size && <span className="block text-ink-muted">{l.size}</span>}</p>

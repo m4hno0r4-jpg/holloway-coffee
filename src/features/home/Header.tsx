@@ -17,7 +17,7 @@ export function Header({ bagCount }: { bagCount: number }) {
         GOOD COFFEE. GOOD MOMENTS. FREE SHIPPING ON ORDERS OVER $50.
       </p>
       <header className="sticky top-0 z-40 border-b bg-surface/95 backdrop-blur">
-        <Container className="flex h-20 items-center justify-between">
+        <Container className="flex h-16 items-center justify-between md:h-20">
           <a href="#top" className="font-serif text-xl tracking-[0.14em] md:text-2xl">
             HOLLOWAY <span className="text-accent-text">COFFEE</span>
           </a>

@@ -5,9 +5,9 @@ import { Croissant, Cup, Leaf, Sparkle, Squiggle } from '@/components/art/Doodle
 import { items, priceLabel, type Category, type Item } from '@/data/menu';
 
 const shapes = [
-  { aspect: 'aspect-[4/5]', offset: 'md:mt-0' },
-  { aspect: 'aspect-square', offset: 'md:mt-16' },
-  { aspect: 'aspect-[3/4]', offset: 'md:mt-6' },
+  { aspect: 'aspect-square md:aspect-[4/5]', offset: 'md:mt-0' },
+  { aspect: 'aspect-square md:aspect-[4/5]', offset: 'md:mt-16' },
+  { aspect: 'aspect-square md:aspect-[3/4]', offset: 'md:mt-6' },
 ];
 const sections: { id: string; title: string; hand: string; note: string; cat?: Category; Icon: typeof Cup; color: string; shadow: string; chip: string }[] = [
   { id: 'menu-coffee', title: 'Signature Coffee', hand: 'start here', note: 'Beans roasted in small batches, and the drinks we pour from them.', cat: 'coffee', Icon: Cup, color: 'text-butter', shadow: 'shadow-[6px_6px_0_rgb(var(--color-butter))]', chip: 'bg-butter' },
@@ -24,14 +24,14 @@ function Card({ item, aspect, offset = '', shadow }: { item: Item; aspect: strin
         <Photo name={item.photo} sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw"
           className="transition-transform duration-base ease-out-soft group-hover:scale-[1.05]" />
         {item.bestSeller && (
-          <span className="absolute left-3 top-3 -rotate-3 border-2 border-espresso bg-butter px-2.5 py-1 text-xs font-bold tracking-[0.14em] text-espresso">BEST SELLER</span>
+          <span className="absolute left-2 top-2 -rotate-3 border-2 border-espresso bg-butter px-1.5 py-0.5 text-[10px] font-bold tracking-[0.1em] text-espresso md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-xs md:tracking-[0.14em]">BEST SELLER</span>
         )}
       </div>
-      <div className="mt-6 flex items-center justify-between gap-4">
-        <h3 className="text-2xl text-ink-inverse">{item.name}</h3>
-        <p className="shrink-0 -rotate-3 rounded-pill border-2 border-espresso bg-butter px-3 py-1 font-medium text-espresso transition-transform duration-base group-hover:rotate-3 motion-reduce:transform-none">{priceLabel(item)}</p>
+      <div className="mt-4 flex flex-col items-start gap-2 md:mt-6 md:flex-row md:items-center md:justify-between md:gap-4">
+        <h3 className="text-lg leading-tight text-ink-inverse md:text-2xl">{item.name}</h3>
+        <p className="shrink-0 -rotate-3 rounded-pill border-2 border-espresso bg-butter px-2.5 py-0.5 text-sm font-medium text-espresso transition-transform md:px-3 md:py-1 md:text-base duration-base group-hover:rotate-3 motion-reduce:transform-none">{priceLabel(item)}</p>
       </div>
-      <p className="mt-3 text-sm text-ivory-deep">{detail}</p>
+      <p className="mt-2 line-clamp-2 text-xs text-ivory-deep md:mt-3 md:line-clamp-none md:text-sm">{detail}</p>
       <span className="mt-3 inline-block min-h-11 text-sm tracking-[0.14em] text-ivory underline decoration-caramel decoration-2 underline-offset-8 group-hover:decoration-butter">
         {item.category === 'coffee' ? 'EXPLORE COFFEE' : 'VIEW PRODUCT'}
       </span>
@@ -43,21 +43,21 @@ export function MenuPage() {
   const jump = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   return (
     <>
-      <section className="relative overflow-hidden pb-section-sm pt-16 md:pt-24">
+      <section className="relative overflow-hidden pb-section-sm pt-10 md:pt-20">
         <Container className="relative">
           <p className="font-hand text-3xl text-butter">what are we having today?</p>
           <h1 className="mt-1 text-display uppercase text-ink-inverse">
             <span className="relative inline-block">The Menu<Squiggle className="absolute -bottom-3 left-0 h-3 w-full text-butter" /></span>
           </h1>
-          <p className="mt-10 max-w-measure text-xl text-ivory-deep">
+          <p className="mt-6 max-w-measure text-lg text-ivory-deep md:mt-10 md:text-xl">
             Explore our collection of thoughtfully sourced and carefully roasted specialty coffees, with fresh bakes and savory bites to match.
           </p>
           <Cup className="absolute right-4 top-0 hidden h-32 w-32 animate-float text-butter motion-reduce:animate-none md:block" />
           <Sparkle className="absolute bottom-0 right-40 hidden h-12 w-12 text-blush md:block" />
-          <nav aria-label="Menu categories" className="mt-10 flex flex-wrap gap-3">
+          <nav aria-label="Menu categories" className="mt-6 flex flex-wrap gap-2 md:mt-10 md:gap-3">
             {sections.map((s) => (
               <button key={s.id} type="button" onClick={() => jump(s.id)}
-                className={`min-h-11 rounded-pill border-2 border-espresso px-5 text-sm font-medium text-espresso transition duration-base hover:-rotate-2 hover:shadow-[3px_3px_0_rgb(var(--color-ivory))] motion-reduce:transform-none ${s.chip}`}>
+                className={`min-h-11 rounded-pill border-2 border-espresso px-4 text-sm font-medium md:px-5 text-espresso transition duration-base hover:-rotate-2 hover:shadow-[3px_3px_0_rgb(var(--color-ivory))] motion-reduce:transform-none ${s.chip}`}>
                 {s.title}
               </button>
             ))}
@@ -73,7 +73,7 @@ export function MenuPage() {
             <Container>
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div className="flex items-center gap-5">
-                  <s.Icon className={`h-14 w-14 shrink-0 ${s.color}`} />
+                  <s.Icon className={`h-10 w-10 shrink-0 md:h-14 md:w-14 ${s.color}`} />
                   <div>
                     <p className={`font-hand text-2xl ${s.color}`}>{s.hand}</p>
                     <h2 className="text-4xl text-ink-inverse">{s.title}</h2>
@@ -81,9 +81,9 @@ export function MenuPage() {
                 </div>
                 <p className="max-w-md text-ivory-deep">{s.note}</p>
               </div>
-              <div className={`mt-14 grid gap-14 sm:grid-cols-2 md:gap-8 lg:gap-14 ${fav ? 'lg:grid-cols-4 lg:gap-8' : 'md:grid-cols-3 md:items-start'}`}>
+              <div className={`mt-8 grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 md:mt-14 md:gap-8 lg:gap-14 ${fav ? 'lg:grid-cols-4 lg:gap-8' : 'md:grid-cols-3 md:items-start'}`}>
                 {list.map((it, i) => (
-                  <Card key={it.slug} item={it} shadow={s.shadow} aspect={fav ? 'aspect-square' : shapes[i % 3].aspect} offset={fav ? '' : shapes[i % 3].offset} />
+                  <Card key={it.slug} item={it} shadow={s.shadow} aspect="aspect-square md:aspect-[4/5]" offset={fav ? '' : shapes[i % 3].offset} />
                 ))}
               </div>
             </Container>

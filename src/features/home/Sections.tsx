@@ -18,7 +18,7 @@ interface AddProps { onAdd: (slug: string, size?: string) => void }
 
 export function Hero() {
   return (
-    <Section spacing="compact" className="pt-12 md:pt-16">
+    <Section spacing="compact" className="pt-8 md:pt-12">
       <Container className="relative">
         <Cup className="absolute right-2 top-0 hidden h-24 w-24 animate-float text-espresso motion-reduce:animate-none md:block lg:h-32 lg:w-32" />
         <h1 className="text-display">
@@ -26,9 +26,9 @@ export function Hero() {
           <br />
           <span className="relative inline-block">Slowing Down For.<Squiggle className="absolute -bottom-3 left-0 h-3 w-full text-terracotta" /></span>
         </h1>
-        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-12 lg:items-end">
+        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-10 lg:items-end">
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-measure text-xl text-ink-muted">
+            <p className="max-w-measure text-lg text-ink-muted md:text-xl">
               Thoughtfully sourced. Carefully roasted. Made for the moments that matter.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -36,9 +36,9 @@ export function Hero() {
               <a href="#story" className={buttonStyles({ variant: 'secondary', size: 'lg', className: caps })}>Our story</a>
             </div>
           </div>
-          <figure className="relative lg:col-span-8">
+          <figure className="relative order-first lg:order-none lg:col-span-8">
             <Sticker className="absolute -top-10 right-2 z-10 h-24 w-24 sm:h-32 sm:w-32" />
-            <div className="aspect-[4/3] -rotate-1 overflow-hidden border-2 border-espresso shadow-hard sm:aspect-[16/10]">
+            <div className="aspect-[4/3] -rotate-1 overflow-hidden border-2 border-espresso shadow-hard sm:aspect-[16/10] lg:aspect-auto lg:h-[46vh] lg:min-h-[280px]">
               <Photo name="hero" eager sizes="(min-width:1024px) 66vw, 100vw" />
             </div>
             <figcaption className="mt-3 text-sm text-ink-muted">Poured to order, one cup at a time.</figcaption>
@@ -52,16 +52,16 @@ export function Hero() {
 export function Intro() {
   return (
     <Section id="story" className="border-t">
-      <Container className="grid gap-12 lg:grid-cols-12">
+      <Container className="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
-          <div className="aspect-[3/4] max-w-sm overflow-hidden">
+          <div className="aspect-[4/3] max-w-sm overflow-hidden border-2 border-espresso sm:aspect-[3/4] lg:max-w-xs">
             <Photo name="intro" sizes="(min-width:1024px) 30vw, 80vw" />
           </div>
         </div>
-        <div className="lg:col-span-7 lg:col-start-6 lg:pt-24">
+        <div className="lg:col-span-7 lg:col-start-6 lg:pt-16">
           <p className="font-hand text-3xl text-terracotta-deep">(and we really mean it)</p>
           <h2 className="mt-1 text-4xl">Not Just Another Cup.</h2>
-          <p className="mt-8 max-w-measure font-serif text-2xl leading-snug">
+          <p className="mt-5 max-w-measure font-serif text-2xl leading-snug md:mt-8">
             We believe great coffee is never an accident. It begins with thoughtful sourcing, comes to life
             through careful roasting, and finds its purpose in the everyday moments we share.
           </p>
@@ -81,7 +81,7 @@ export function Signature({ onAdd }: AddProps) {
   ];
   return (
     <section className="bg-surface-inverse py-section text-ink-inverse">
-      <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
+      <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5">
           <p className={`${label} text-ivory-deep`}>BEST SELLER</p>
           <h2 className="mt-4 text-4xl text-ink-inverse">Holloway House Blend</h2>
@@ -90,7 +90,7 @@ export function Signature({ onAdd }: AddProps) {
             toasted hazelnut and a smooth caramel finish. Crafted for slow mornings, long conversations and
             everything in between.
           </p>
-          <dl className="mt-10 border-b border-ivory/25">
+          <dl className="mt-6 border-b border-ivory/25 md:mt-10">
             {specs.map(([k, v]) => (
               <div key={k} className="grid grid-cols-3 gap-4 border-t border-ivory/25 py-3 text-sm">
                 <dt className="text-ivory-deep">{k}</dt>
@@ -106,8 +106,8 @@ export function Signature({ onAdd }: AddProps) {
             </button>
           </div>
         </div>
-        <div className="lg:col-span-7">
-          <div className="aspect-[4/5] overflow-hidden md:aspect-[5/6]">
+        <div className="order-first lg:order-none lg:col-span-7">
+          <div className="aspect-[4/3] overflow-hidden border-2 border-ivory sm:aspect-[5/4] lg:aspect-auto lg:h-[68vh] lg:min-h-[320px]">
             <Photo name="blend" sizes="(min-width:1024px) 58vw, 100vw" />
           </div>
         </div>
@@ -126,26 +126,29 @@ export function Brews({ onAdd }: AddProps) {
             Distinctive profiles. Thoughtful roasting. Something worth coming back to.
           </p>
         </div>
-        <div className="mt-16 grid gap-14 md:grid-cols-3 md:items-start md:gap-8 lg:gap-14">
-          {brews.map((b) => (
-            <article key={b.name} className={b.offset}>
-              <div className={`${b.aspect} overflow-hidden`}>
-                <Photo name={b.photo} sizes="(min-width:768px) 33vw, 100vw" />
-              </div>
-              <div className="mt-5 flex items-baseline justify-between gap-4 border-b pb-3">
-                <h3 className="text-2xl">{b.name}</h3>
-                <p className="font-serif text-2xl">${b.price}</p>
-              </div>
-              <p className="mt-3 text-sm text-ink-muted">{b.roast} roast · {b.notes.join(', ')}</p>
-              <p className="mt-4">{b.description}</p>
-              <button type="button" onClick={() => onAdd(b.name.toLowerCase().replace(/ /g, '-'), '250g')}
-                className="mt-5 min-h-11 text-sm tracking-[0.14em] text-accent-text underline underline-offset-8 hover:text-ink">
-                ADD TO BAG
-              </button>
-            </article>
-          ))}
+        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-14 md:grid-cols-3 md:items-start md:gap-8 lg:gap-14">
+          {brews.map((b, i) => {
+            const wide = i === brews.length - 1 && brews.length % 2 === 1;
+            return (
+              <article key={b.name} className={`${b.offset} ${wide ? 'col-span-2 mx-auto w-[calc(50%-0.5rem)] md:col-span-1 md:w-auto' : ''}`}>
+                <div className="aspect-square overflow-hidden border-2 border-espresso md:aspect-[4/5]">
+                  <Photo name={b.photo} sizes="(min-width:768px) 33vw, 50vw" />
+                </div>
+                <div className="mt-4 flex flex-col gap-1 border-b pb-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 md:mt-5">
+                  <h3 className="text-lg sm:text-2xl">{b.name}</h3>
+                  <p className="font-serif text-base sm:text-2xl">${b.price}</p>
+                </div>
+                <p className="mt-3 text-xs text-ink-muted sm:text-sm">{b.roast} roast · {b.notes.join(', ')}</p>
+                <p className="mt-3 line-clamp-3 text-sm md:mt-4 md:line-clamp-none md:text-base">{b.description}</p>
+                <button type="button" onClick={() => onAdd(b.name.toLowerCase().replace(/ /g, '-'), '250g')}
+                  className="mt-3 min-h-11 text-sm tracking-[0.14em] text-accent-text underline underline-offset-8 hover:text-ink md:mt-5">
+                  ADD TO BAG
+                </button>
+              </article>
+            );
+          })}
         </div>
-        <p className="mt-16">
+        <p className="mt-10 md:mt-16">
           <a href="#shop" className="text-sm tracking-[0.14em] underline underline-offset-8">SHOP ALL COFFEE</a>
         </p>
       </Container>
@@ -156,7 +159,7 @@ export function Brews({ onAdd }: AddProps) {
 export function Principles() {
   return (
     <Section className="on-color border-y-2 border-espresso bg-sage">
-      <Container className="grid gap-12 lg:grid-cols-12">
+      <Container className="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <h2 className="text-4xl lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           Good Coffee Has a Little More Behind It.
         </h2>
@@ -164,7 +167,7 @@ export function Principles() {
           {principles.map((p) => {
             const Icon = icons[p.icon];
             return (
-              <li key={p.title} className="grid gap-4 border-t py-8 first:border-t-0 first:pt-0 sm:grid-cols-[3rem_1fr]">
+              <li key={p.title} className="grid gap-3 border-t py-6 first:border-t-0 first:pt-0 sm:grid-cols-[3rem_1fr] md:gap-4 md:py-8">
                 <Icon size={26} strokeWidth={1.25} className="text-accent-text" aria-hidden="true" />
                 <div>
                   <h3 className="text-2xl">{p.title}</h3>
@@ -181,12 +184,12 @@ export function Principles() {
 
 export function Banner() {
   return (
-    <section className="relative flex min-h-[75svh] items-end overflow-hidden bg-espresso">
+    <section className="relative flex min-h-[55svh] md:min-h-[70svh] items-end overflow-hidden bg-espresso">
       <div className="absolute inset-0">
         <Photo name="banner" sizes="100vw" />
       </div>
       <div className="absolute inset-0 bg-espresso/60" aria-hidden="true" />
-      <Container className="relative pb-16 pt-40 md:pb-24">
+      <Container className="relative pb-10 pt-24 md:pb-24 md:pt-40">
         <p className="max-w-3xl font-serif text-4xl leading-tight text-ivory md:text-display">
           Take a moment. Make it a good one.
         </p>
@@ -200,13 +203,13 @@ export function Benefits() {
     <Section spacing="compact">
       <Container>
         <h2 className="text-2xl">The Holloway Difference</h2>
-        <ul className="mt-10 grid gap-x-8 gap-y-10 border-t pt-10 sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-6 border-t pt-6 sm:gap-x-8 md:mt-10 md:gap-y-10 md:pt-10 lg:grid-cols-5">
           {benefits.map((b) => {
             const Icon = icons[b.icon];
             return (
               <li key={b.text} className="flex flex-col gap-4">
                 <Icon size={24} strokeWidth={1.25} className="text-accent-text" aria-hidden="true" />
-                <p className="max-w-[16rem]">{b.text}</p>
+                <p className="max-w-[16rem] text-sm sm:text-base">{b.text}</p>
               </li>
             );
           })}
@@ -225,7 +228,7 @@ export function Newsletter() {
   };
   return (
     <Section className="on-color border-t-2 border-espresso bg-butter">
-      <Container className="grid gap-10 lg:grid-cols-12 lg:items-end">
+      <Container className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
         <div className="lg:col-span-6">
           <h2 className="text-4xl">A Better Kind of Inbox.</h2>
           <p className="mt-5 max-w-measure text-lg text-ink-muted">
