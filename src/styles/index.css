@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global element defaults. Tokens live in tokens.css. */
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-surface font-sans text-base text-ink antialiased;
+    min-height: 100vh;
+    min-height: 100svh;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-ink;
+    font-weight: var(--weight-heading);
+    letter-spacing: var(--tracking-heading);
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(var(--color-caramel) / 0.3);
+    color: rgb(var(--color-ink));
+  }
+
+  /* Visible keyboard focus everywhere, in a colour that passes contrast on ivory. */
+  :focus-visible {
+    outline: var(--border-strong) solid rgb(var(--color-accent-text));
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@layer components {
+  /* First focusable element on every page. Hidden until keyboard focus. */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 50;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    background: rgb(var(--color-surface-inverse));
+    color: rgb(var(--color-ink-inverse));
+    transition: top var(--duration-base) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hand-drawn / interactive layer */
+.steam { transform-box: fill-box; animation: steam 2.6s ease-in-out infinite; }
+@keyframes steam { 0% { opacity: 0; transform: translateY(5px); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-7px); } }
+
+[data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+[data-reveal].is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } .steam { animation: none; opacity: 1; } }
+
+/* On bright colour blocks, secondary and accent text switch to full espresso for contrast. */
+.on-color .text-ink-muted, .on-color .text-accent-text { color: rgb(var(--color-espresso)); }
+
+@keyframes bean-pop {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(0.4) rotate(0); }
+  to { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 140px)) scale(1) rotate(var(--r)); }
+}
+.bean-pop { animation: bean-pop 1.2s cubic-bezier(0.2, 0.7, 0.3, 1) forwards; }

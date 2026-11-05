@@ -1,0 +1,106 @@
+/*
+ * Holloway Coffee design tokens
+ * ---------------------------------------------------------------
+ * Single source of truth. Tailwind (tailwind.config.ts) reads these
+ * variables, so changing a value here updates the whole site.
+ *
+ * Colours are stored as space-separated RGB channels so Tailwind's
+ * opacity modifiers work (e.g. `bg-espresso/60`).
+ */
+
+:root {
+  /* Added colour: warm accents to sit beside the five brand colours. */
+  --color-terracotta: 196 87 47; /* #C4572F fills */
+  --color-terracotta-deep: 166 63 34; /* #A63F22 text, ~4.9:1 on ivory */
+  --color-butter: 242 193 78; /* #F2C14E */
+  --color-sage: 156 174 138; /* #9CAE8A */
+  --color-blush: 233 184 162; /* #E9B8A2 */
+
+  /* ---- Brand colours ------------------------------------------ */
+  --color-ivory: 237 227 211; /* #EDE3D3 warm ivory */
+  --color-espresso: 56 37 28; /* #38251C */
+  --color-caramel: 166 108 69; /* #A66C45 */
+  --color-olive: 119 116 90; /* #77745A muted olive */
+  --color-white: 255 255 255; /* #FFFFFF */
+
+  /* ---- Supporting shades (derived from the brand colours) ------
+   * Added so small text can meet WCAG AA (4.5:1) on ivory. Caramel and
+   * olive alone are only ~3.4:1 and ~3.7:1, fine for large type and
+   * graphics, not for body-size text. */
+  --color-ivory-light: 246 240 230; /* #F6F0E6 raised panels */
+  --color-ivory-deep: 221 208 187; /* #DDD0BB quiet fills, dividers */
+  --color-espresso-soft: 94 70 58; /* #5E463A secondary text, ~6.9:1 */
+  --color-caramel-deep: 138 86 54; /* #8A5636 links, small accents, ~4.8:1 */
+  --color-olive-deep: 92 90 66; /* #5C5A42 small olive text, ~5.5:1 */
+
+  /* ---- Semantic roles (use these in components) ---------------- */
+  --color-surface: var(--color-ivory);
+  --color-surface-raised: var(--color-ivory-light);
+  --color-surface-inverse: var(--color-espresso);
+  --color-ink: var(--color-espresso);
+  --color-ink-muted: var(--color-espresso-soft);
+  --color-ink-inverse: var(--color-ivory);
+  --color-accent: var(--color-caramel);
+  --color-accent-text: var(--color-caramel-deep);
+
+  /* ---- Typography ---------------------------------------------- */
+  --font-serif: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-hand: 'Caveat', 'Segoe Print', cursive;
+
+  --weight-heading: 400;
+  --tracking-heading: -0.02em;
+  --tracking-display: -0.03em;
+
+  /* Fluid type scale: each step grows smoothly between ~360px and ~1440px. */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.5rem + 1.1vw, 2.5rem);
+  --text-3xl: clamp(2.125rem, 1.7rem + 1.9vw, 3.5rem);
+  --text-4xl: clamp(2.5rem, 1.9rem + 2.7vw, 4.5rem);
+  --text-display: clamp(3rem, 2.1rem + 4.2vw, 6.75rem);
+
+  /* Serif headings get tight leading; body text gets generous leading. */
+  --leading-xs: 1.5;
+  --leading-sm: 1.6;
+  --leading-base: 1.65;
+  --leading-lg: 1.55;
+  --leading-xl: 1.35;
+  --leading-2xl: 1.2;
+  --leading-3xl: 1.12;
+  --leading-4xl: 1.06;
+  --leading-display: 1;
+
+  /* ---- Spacing --------------------------------------------------
+   * Tailwind's default 4px scale stays available. These are the
+   * layout-level tokens that adapt to screen size. */
+  --space-gutter: clamp(1.25rem, 0.8rem + 2vw, 3rem);
+  --space-section: clamp(4.5rem, 3rem + 6vw, 9.5rem);
+  --space-section-sm: clamp(3rem, 2.25rem + 3vw, 5.5rem);
+
+  /* ---- Layout widths ------------------------------------------- */
+  --container-max: 80rem; /* 1280px */
+  --container-narrow: 48rem; /* 768px */
+  --measure: 38rem; /* comfortable reading line length */
+
+  /* ---- Borders and radii --------------------------------------- */
+  --border-hairline: 1px;
+  --border-strong: 2px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 10px;
+  --radius-xl: 20px;
+
+  /* ---- Shadows (warm, never grey) ------------------------------ */
+  --shadow-soft: 0 1px 2px rgb(var(--color-espresso) / 0.06),
+    0 10px 28px -10px rgb(var(--color-espresso) / 0.16);
+  --shadow-lifted: 0 2px 4px rgb(var(--color-espresso) / 0.06),
+    0 24px 48px -16px rgb(var(--color-espresso) / 0.24);
+
+  /* ---- Motion --------------------------------------------------- */
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

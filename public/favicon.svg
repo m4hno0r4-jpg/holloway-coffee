@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Holloway Coffee">
+  <rect width="64" height="64" rx="14" fill="#38251C"/>
+  <ellipse cx="32" cy="32" rx="15" ry="21" transform="rotate(35 32 32)" fill="#EDE3D3"/>
+  <path d="M22 46c8-6 11-14 20-28" fill="none" stroke="#A66C45" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
